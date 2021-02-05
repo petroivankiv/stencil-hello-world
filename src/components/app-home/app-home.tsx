@@ -15,7 +15,7 @@ export class AppHome {
         </p>
 
         <stencil-route-link url="/profile/stencil">
-          <button>Profile page</button>
+          <button>Go to Profile page</button>
         </stencil-route-link>
       </div>
     );
