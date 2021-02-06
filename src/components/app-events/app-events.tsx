@@ -8,20 +8,21 @@ import { events } from './mock';
   shadow: true,
 })
 export class AppEvents {
-
   render() {
     return (
       <Host>
         <div class="events">
           {events.map(e => (
-            <div class="event">
-              <span class="category">{e.category}</span>
-              <span class="description">{e.description}</span>
+            <div class="wrapper">
+              <div class="card" />
+              <div class="event">
+                <span class="category">{e.category}</span>
+                <span class="description">{e.description}</span>
+              </div>
             </div>
           ))}
         </div>
       </Host>
     );
   }
-
 }
