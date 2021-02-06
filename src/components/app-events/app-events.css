@@ -1,12 +1,12 @@
 :host {
   display: block;
   height: 100%;
+  padding: 25px;
 }
 
-.events {
+.events, .lains {
   display: flex;
   justify-content: space-between;
-  padding: 25px;
 }
 
 .event {
