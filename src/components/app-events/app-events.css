@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.events {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+.event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.description {
+  color: grey;
+}

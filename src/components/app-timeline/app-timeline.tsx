@@ -1,16 +1,17 @@
-import { Element, Component, Host, h } from '@stencil/core';
+import { Element, Event, EventEmitter, Component, Host, h } from '@stencil/core';
 import * as d3 from 'd3';
 import { format } from 'date-fns';
 
 import { data, scatterPlot } from './mock';
 
 @Component({
-  tag: 'app-timeline-chart',
-  styleUrl: 'app-timeline-chart.css',
+  tag: 'app-timeline',
+  styleUrl: 'app-timeline.css',
   shadow: true,
 })
-export class AppTimelineChart {
+export class AppTimeline {
   @Element() element: HTMLElement;
+  @Event() selectRange: EventEmitter<Date[]>;
 
   height = 150;
   width = 1200;
@@ -117,6 +118,9 @@ export class AppTimelineChart {
 
       const [x0, x1] = selection.map(d => interval.round(x.invert(d)));
 
+      // @todo emit selected range
+      // this.selectRange.emit([x0, x1]);
+
       d3.select(this)
         .transition()
         .call(brush.move, x1 > x0 ? [x0, x1].map(x) : null);
@@ -126,7 +130,6 @@ export class AppTimelineChart {
   render() {
     return (
       <Host>
-        <p>Time line chart</p>
         <div class="timeline-svg-container">
           <svg class="chart" />
         </div>

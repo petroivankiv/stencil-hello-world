@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults } from "@stencil/router";
 export namespace Components {
+    interface AppEvents {
+    }
     interface AppHome {
     }
     interface AppProfile {
@@ -14,10 +16,18 @@ export namespace Components {
     }
     interface AppRoot {
     }
-    interface AppTimelineChart {
+    interface AppTimeline {
+    }
+    interface AppTimelineEvents {
     }
 }
 declare global {
+    interface HTMLAppEventsElement extends Components.AppEvents, HTMLStencilElement {
+    }
+    var HTMLAppEventsElement: {
+        prototype: HTMLAppEventsElement;
+        new (): HTMLAppEventsElement;
+    };
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
     }
     var HTMLAppHomeElement: {
@@ -36,20 +46,30 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
-    interface HTMLAppTimelineChartElement extends Components.AppTimelineChart, HTMLStencilElement {
+    interface HTMLAppTimelineElement extends Components.AppTimeline, HTMLStencilElement {
     }
-    var HTMLAppTimelineChartElement: {
-        prototype: HTMLAppTimelineChartElement;
-        new (): HTMLAppTimelineChartElement;
+    var HTMLAppTimelineElement: {
+        prototype: HTMLAppTimelineElement;
+        new (): HTMLAppTimelineElement;
+    };
+    interface HTMLAppTimelineEventsElement extends Components.AppTimelineEvents, HTMLStencilElement {
+    }
+    var HTMLAppTimelineEventsElement: {
+        prototype: HTMLAppTimelineEventsElement;
+        new (): HTMLAppTimelineEventsElement;
     };
     interface HTMLElementTagNameMap {
+        "app-events": HTMLAppEventsElement;
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
-        "app-timeline-chart": HTMLAppTimelineChartElement;
+        "app-timeline": HTMLAppTimelineElement;
+        "app-timeline-events": HTMLAppTimelineEventsElement;
     }
 }
 declare namespace LocalJSX {
+    interface AppEvents {
+    }
     interface AppHome {
     }
     interface AppProfile {
@@ -57,23 +77,30 @@ declare namespace LocalJSX {
     }
     interface AppRoot {
     }
-    interface AppTimelineChart {
+    interface AppTimeline {
+        "onSelectRange"?: (event: CustomEvent<Date[]>) => void;
+    }
+    interface AppTimelineEvents {
     }
     interface IntrinsicElements {
+        "app-events": AppEvents;
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
-        "app-timeline-chart": AppTimelineChart;
+        "app-timeline": AppTimeline;
+        "app-timeline-events": AppTimelineEvents;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-events": LocalJSX.AppEvents & JSXBase.HTMLAttributes<HTMLAppEventsElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
-            "app-timeline-chart": LocalJSX.AppTimelineChart & JSXBase.HTMLAttributes<HTMLAppTimelineChartElement>;
+            "app-timeline": LocalJSX.AppTimeline & JSXBase.HTMLAttributes<HTMLAppTimelineElement>;
+            "app-timeline-events": LocalJSX.AppTimelineEvents & JSXBase.HTMLAttributes<HTMLAppTimelineEventsElement>;
         }
     }
 }
