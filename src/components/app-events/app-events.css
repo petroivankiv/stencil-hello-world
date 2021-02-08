@@ -4,15 +4,21 @@
   padding: 25px;
 }
 
-.events, .lains {
+.events,
+.lains {
   display: flex;
   justify-content: space-between;
+}
+
+.lains {
+  transform: perspective(254px) rotateX(32deg) scale(0.65);
 }
 
 .event {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
 }
 
 .category {
@@ -36,7 +42,6 @@
   width: 100%;
   height: 530px;
   margin-bottom: 10px;
-  /* transform: perspective(900px) rotateX(60deg) scale(0.7); */
   border: 1px solid lightgrey;
   border-bottom: 4px solid grey;
   /* box-shadow: 0px 20px 100px #555; */
