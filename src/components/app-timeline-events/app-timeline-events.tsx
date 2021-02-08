@@ -7,7 +7,7 @@ import { Component, Host, h } from '@stencil/core';
 })
 export class AppTimelineEvents {
   onSelectRange(range: CustomEvent<Date[]>) {
-    console.log(range);
+    console.log(range.detail);
   }
 
   render() {

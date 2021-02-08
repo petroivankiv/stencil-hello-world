@@ -25,10 +25,10 @@ export class AppTimeline {
       .attr('width', this.width + this.margin.left + this.margin.right)
       .attr('height', this.height + this.margin.top + this.margin.bottom);
 
-    this.buildChart(svg);
+    this.buildChart(svg, this.selectRange);
   }
 
-  buildChart(svg) {
+  buildChart(svg, selectRange) {
     const brush = d3
       .brushX()
       .extent([
@@ -100,7 +100,9 @@ export class AppTimeline {
         .call(xAxisLabels);
 
     svg.append('g').call(xAxis);
-    svg.append('g').attr('class', 'brush').call(brush);
+
+    // append brush with default selection
+    svg.append('g').attr('class', 'brush').call(brush).call(brush.move, [this.margin.left, 300]);
     svg
       .append('g')
       .selectAll('dot')
@@ -119,8 +121,8 @@ export class AppTimeline {
 
       const [x0, x1] = selection.map(d => interval.round(x.invert(d)));
 
-      // @todo emit selected range
-      // this.selectRange.emit([x0, x1]);
+      // emit selection
+      selectRange.emit([x0, x1]);
 
       d3.select(this)
         .transition()
