@@ -10,7 +10,6 @@ export const data = [
   { date: '2020-09-01', value: 1000 },
   { date: '2020-10-01', value: 1000 },
   { date: '2020-11-01', value: 1000 },
-  { date: '2020-12-01', value: 1000 },
 ];
 
 export const scatterPlot = [

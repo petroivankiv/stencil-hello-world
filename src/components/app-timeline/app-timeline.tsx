@@ -15,9 +15,11 @@ export class AppTimeline {
 
   height = 150;
   width = 1200;
-  margin = { top: 0, right: 20, bottom: 50, left: 40 };
+  margin = { top: 0, right: 20, bottom: 20, left: 20 };
 
   componentDidLoad() {
+    this.width = this.element.clientWidth - this.margin.left - this.margin.right;
+
     let svg = d3
       .select(this.element.shadowRoot.querySelectorAll('.chart')[0])
       .attr('width', this.width + this.margin.left + this.margin.right)
@@ -38,6 +40,10 @@ export class AppTimeline {
 
     // rundom y value for scatter plot
     const y = d3.randomUniform(this.height / 2, this.height / 8);
+    const x = d3
+      .scaleTime()
+      .domain(d3.extent(data, d => new Date(d.date)))
+      .rangeRound([this.margin.left, this.width - this.margin.right]);
 
     const vLines = g =>
       g
@@ -92,11 +98,6 @@ export class AppTimeline {
         .call(brushTicks)
         .call(vLines)
         .call(xAxisLabels);
-
-    const x = d3
-      .scaleTime()
-      .domain(d3.extent(data, d => new Date(d.date)))
-      .rangeRound([this.margin.left, this.width - this.margin.right]);
 
     svg.append('g').call(xAxis);
     svg.append('g').attr('class', 'brush').call(brush);
