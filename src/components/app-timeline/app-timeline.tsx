@@ -15,7 +15,7 @@ export class AppTimeline {
 
   height = 150;
   width = 1200;
-  margin = { top: 0, right: 20, bottom: 20, left: 20 };
+  margin = { top: 0, right: 20, bottom: 20, left: 50 };
 
   componentDidLoad() {
     this.width = this.element.clientWidth - this.margin.left - this.margin.right;
@@ -43,7 +43,8 @@ export class AppTimeline {
     const x = d3
       .scaleTime()
       .domain(d3.extent(data, d => new Date(d.date)))
-      .rangeRound([this.margin.left, this.width - this.margin.right]);
+      .rangeRound([this.margin.left, this.width - this.margin.right])
+      .nice();
 
     const vLines = g =>
       g
@@ -88,7 +89,6 @@ export class AppTimeline {
             .tickPadding(10)
             .tickFormat(d => format(d, 'MMM yy')),
         )
-        // .attr('text-anchor', null)
         .call(g => g.select('.domain').remove())
         .call(g => g.selectAll('text').attr('x', 6));
 
