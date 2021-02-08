@@ -13,7 +13,7 @@ export class AppTimeline {
   @Element() element: HTMLElement;
   @Event() selectRange: EventEmitter<Date[]>;
 
-  height = 150;
+  height = 140;
   width = 1200;
   margin = { top: 0, right: 20, bottom: 20, left: 50 };
 
