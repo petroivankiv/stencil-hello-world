@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shw-pod
+  labels:
+    component: web
+spec:
+  containers:
+    - name: stencil-hello-world
+      image: petroivankiv/stencil-hello-world:latest
+      ports:
+        - containerPort: 80
