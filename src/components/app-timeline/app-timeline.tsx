@@ -34,7 +34,7 @@ export class AppTimeline {
         [this.width - this.margin.right, this.height - this.margin.bottom],
       ])
       .on('end', brushended);
-    const interval = d3.timeDay.every(10);
+    const interval = d3.timeDay.every(1);
 
     // rundom y value for scatter plot
     const y = d3.randomUniform(this.height / 2, this.height / 8);

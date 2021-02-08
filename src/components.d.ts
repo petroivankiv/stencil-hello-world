@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults } from "@stencil/router";
 export namespace Components {
+    interface AppEventCard {
+    }
     interface AppEvents {
     }
     interface AppHome {
@@ -22,6 +24,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLAppEventCardElement extends Components.AppEventCard, HTMLStencilElement {
+    }
+    var HTMLAppEventCardElement: {
+        prototype: HTMLAppEventCardElement;
+        new (): HTMLAppEventCardElement;
+    };
     interface HTMLAppEventsElement extends Components.AppEvents, HTMLStencilElement {
     }
     var HTMLAppEventsElement: {
@@ -59,6 +67,7 @@ declare global {
         new (): HTMLAppTimelineEventsElement;
     };
     interface HTMLElementTagNameMap {
+        "app-event-card": HTMLAppEventCardElement;
         "app-events": HTMLAppEventsElement;
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
@@ -68,6 +77,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface AppEventCard {
+    }
     interface AppEvents {
     }
     interface AppHome {
@@ -83,6 +94,7 @@ declare namespace LocalJSX {
     interface AppTimelineEvents {
     }
     interface IntrinsicElements {
+        "app-event-card": AppEventCard;
         "app-events": AppEvents;
         "app-home": AppHome;
         "app-profile": AppProfile;
@@ -95,6 +107,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-event-card": LocalJSX.AppEventCard & JSXBase.HTMLAttributes<HTMLAppEventCardElement>;
             "app-events": LocalJSX.AppEvents & JSXBase.HTMLAttributes<HTMLAppEventsElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
