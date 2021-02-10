@@ -33,7 +33,7 @@ export class AppEvents {
 
                   return (
                     <div class="event-card" style={{ bottom: `${top - 40}px`, width: "350px", height: "150px" }}>
-                      <app-event-card title={event.title} />
+                      <app-event-card cardTitle={event.title} />
                     </div>
                   );
                 })}

@@ -36,6 +36,7 @@ export class AppTimeline {
         [this.margin.left, this.margin.top],
         [this.width - this.margin.right, this.height - this.margin.bottom],
       ])
+      .on('brush', brushended)
       .on('end', brushended);
     const interval = d3.timeDay.every(1);
 
@@ -124,10 +125,6 @@ export class AppTimeline {
 
       // emit selection
       selectRange.emit([x0, x1]);
-
-      d3.select(this)
-        .transition()
-        .call(brush.move, x1 > x0 ? [x0, x1].map(x) : null);
     }
   }
 

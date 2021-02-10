@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults } from "@stencil/router";
 export namespace Components {
     interface AppEventCard {
-        "title": string;
+        "cardTitle": string;
     }
     interface AppEvents {
         "events": any;
@@ -83,7 +83,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AppEventCard {
-        "title"?: string;
+        "cardTitle"?: string;
     }
     interface AppEvents {
         "events"?: any;
