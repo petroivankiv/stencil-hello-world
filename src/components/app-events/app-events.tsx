@@ -15,7 +15,7 @@ export class AppEvents {
 
   componentWillUpdate() {
     if (this.range) {
-      this.timeScale = d3.scaleTime().domain(this.range).rangeRound([0, 320]).nice();
+      this.timeScale = d3.scaleTime().domain(this.range).rangeRound([0, 500]).nice();
     }
   }
 
@@ -32,7 +32,7 @@ export class AppEvents {
                   const top = this.timeScale(event.date);
 
                   return (
-                    <div class="event-card" style={{ bottom: `${top}px`, width: "350px", height: "150px" }}>
+                    <div class="event-card" style={{ bottom: `${top - 40}px`, width: "350px", height: "150px" }}>
                       <app-event-card title={event.title} />
                     </div>
                   );

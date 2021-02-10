@@ -20,7 +20,6 @@ export class AppTimelineEvents {
   }
 
   render() {
-    console.log(this.scatterPlot);
     return (
       <Host>
         <app-events events={events} range={this.range} />
