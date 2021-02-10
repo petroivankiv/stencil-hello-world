@@ -11,6 +11,7 @@ export namespace Components {
         "title": string;
     }
     interface AppEvents {
+        "events": any;
         "range": Date[];
     }
     interface AppHome {
@@ -21,6 +22,8 @@ export namespace Components {
     interface AppRoot {
     }
     interface AppTimeline {
+        "data": any;
+        "scatterPlot": any;
     }
     interface AppTimelineEvents {
     }
@@ -83,6 +86,7 @@ declare namespace LocalJSX {
         "title"?: string;
     }
     interface AppEvents {
+        "events"?: any;
         "range"?: Date[];
     }
     interface AppHome {
@@ -93,7 +97,9 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface AppTimeline {
+        "data"?: any;
         "onSelectRange"?: (event: CustomEvent<Date[]>) => void;
+        "scatterPlot"?: any;
     }
     interface AppTimelineEvents {
     }

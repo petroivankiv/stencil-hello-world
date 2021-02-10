@@ -1,4 +1,5 @@
 import { Component, Host, h, State } from '@stencil/core';
+import { data, events } from './mock';
 
 @Component({
   tag: 'app-timeline-events',
@@ -8,16 +9,23 @@ import { Component, Host, h, State } from '@stencil/core';
 export class AppTimelineEvents {
   @State() range: Date[];
 
+  events = events;
+  chartData = data;
+  scatterPlot = events.reduce((acc, curr) => {
+    return [...acc, ...curr.events];
+  }, []);
+
   onSelectRange(range: CustomEvent<Date[]>) {
     this.range = range.detail;
   }
 
   render() {
+    console.log(this.scatterPlot);
     return (
       <Host>
-        <app-events range={this.range} />
+        <app-events events={events} range={this.range} />
         <div class="devider" />
-        <app-timeline onSelectRange={ev => this.onSelectRange(ev)} />
+        <app-timeline scatterPlot={this.scatterPlot} data={this.chartData} onSelectRange={ev => this.onSelectRange(ev)} />
       </Host>
     );
   }

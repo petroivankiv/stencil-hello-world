@@ -1,8 +1,6 @@
-import { Element, Event, EventEmitter, Component, Host, h } from '@stencil/core';
+import { Element, Event, EventEmitter, Component, Host, h, Prop } from '@stencil/core';
 import * as d3 from 'd3';
 import { format } from 'date-fns';
-
-import { data, scatterPlot } from './mock';
 
 @Component({
   tag: 'app-timeline',
@@ -12,6 +10,9 @@ import { data, scatterPlot } from './mock';
 export class AppTimeline {
   @Element() element: HTMLElement;
   @Event() selectRange: EventEmitter<Date[]>;
+
+  @Prop() data;
+  @Prop() scatterPlot;
 
   height = 140;
   width = 1200;
@@ -42,7 +43,7 @@ export class AppTimeline {
     const y = d3.randomUniform(this.height / 2, this.height / 8);
     const x = d3
       .scaleTime()
-      .domain(d3.extent(data, d => new Date(d.date)))
+      .domain(d3.extent(this.data, d => new Date(d.date)))
       .rangeRound([this.margin.left, this.width - this.margin.right])
       .nice();
 
@@ -106,7 +107,7 @@ export class AppTimeline {
     svg
       .append('g')
       .selectAll('dot')
-      .data(scatterPlot)
+      .data(this.scatterPlot)
       .enter()
       .append('circle')
       .attr('cx', d => x(new Date(d.date)))

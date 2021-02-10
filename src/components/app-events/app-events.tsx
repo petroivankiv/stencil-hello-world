@@ -1,8 +1,6 @@
 import { Component, Host, h, Prop } from '@stencil/core';
 import * as d3 from 'd3';
 
-import { events } from './mock';
-
 @Component({
   tag: 'app-events',
   styleUrl: 'app-events.css',
@@ -10,6 +8,7 @@ import { events } from './mock';
 })
 export class AppEvents {
   @Prop() range: Date[];
+  @Prop() events;
 
   timeScale;
   topBase = -172;
@@ -24,7 +23,7 @@ export class AppEvents {
     return (
       <Host>
         <div class="lains">
-          {events.map((e) => (
+          {this.events?.map((e) => (
             <div class="wrapper">
               <div class="event-path" />
               {e.events
@@ -42,7 +41,7 @@ export class AppEvents {
           ))}
         </div>
         <div class="events">
-          {events.map((e, i) => (
+          {this.events?.map((e, i) => (
             <div class="event">
               <span class="category">{e.category}</span>
               <span class="description">{e.description}</span>
