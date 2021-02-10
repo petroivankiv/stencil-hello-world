@@ -12,6 +12,7 @@
 
 .lains {
   transform: perspective(254px) rotateX(32deg) scale(0.65);
+  transform-style: preserve-3d;
 }
 
 .event {
@@ -34,6 +35,9 @@
 .wrapper {
   flex: 1;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wrapper:not(:last-of-type) {
@@ -49,10 +53,31 @@
 }
 
 .event-card {
+  height: 100%;
   position: absolute;
-  box-shadow: 0px 1px 2px #555;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
   transition: 0.5s ease all;
-  top: -172px;
+  bottom: 0;
   z-index: 100;
   background-color: white;
+  transform: rotateX(-22deg) translate(0%, -50%);
+  transform-style: preserve-3d;
+}
+
+.event-card:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin-left: -1em;
+  bottom: -2em;
+  left: 50%;
+
+  border: 1em solid black;
+  border-color: transparent transparent #fff #fff;
+
+  transform-origin: 0 0;
+  transform: rotate(-45deg);
+
+  box-shadow: -1px 3px 1px 0px rgb(0 0 0 / 20%);
 }

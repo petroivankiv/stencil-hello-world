@@ -1,4 +1,5 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
+import * as d3 from 'd3';
 
 import { events } from './mock';
 
@@ -8,22 +9,43 @@ import { events } from './mock';
   shadow: true,
 })
 export class AppEvents {
+  @Prop() range: Date[];
+
+  timeScale;
+  topBase = -172;
+
+  componentWillUpdate() {
+    if (this.range) {
+      this.timeScale = d3.scaleTime().domain(this.range).rangeRound([0, 320]).nice();
+    }
+  }
+
   render() {
     return (
       <Host>
         <div class="lains">
-          {events.map(() => (
+          {events.map((e) => (
             <div class="wrapper">
               <div class="event-path" />
+              {e.events
+                .filter(ev => this.range?.[0] <= ev.date && this.range?.[1] >= ev.date)
+                .map(event => {
+                  const top = this.timeScale(event.date);
+
+                  return (
+                    <div class="event-card" style={{ bottom: `${top}px`, width: "350px", height: "150px" }}>
+                      <app-event-card title={event.title} />
+                    </div>
+                  );
+                })}
             </div>
           ))}
         </div>
         <div class="events">
-          {events.map(e => (
+          {events.map((e, i) => (
             <div class="event">
               <span class="category">{e.category}</span>
               <span class="description">{e.description}</span>
-              <app-event-card class="event-card" />
             </div>
           ))}
         </div>

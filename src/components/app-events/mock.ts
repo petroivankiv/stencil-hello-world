@@ -4,8 +4,12 @@ export const events = [
     description: 'Description A',
     events: [
       {
-        title: 'Title A1',
+        title: 'Title A1 longgg',
         date: new Date(2020, 1, 10, 20, 50),
+      },
+      {
+        title: 'Title A2',
+        date: new Date(2020, 5, 10, 20, 50),
       }
     ],
   },
@@ -44,7 +48,7 @@ export const events = [
     description: 'Description E',
     events: [
       {
-        title: 'Title D1',
+        title: 'Title E1',
         date: new Date(2020, 10, 25, 20, 50),
       }
     ],

@@ -1,5 +1,6 @@
 :host {
   display: block;
+  height: 100%;
 }
 
 .event-card {
@@ -7,4 +8,5 @@
   align-items: center;
   justify-content: flex-start;
   padding: 10px;
+  height: 100%;
 }

@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'app-event-card',
@@ -6,15 +6,15 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class AppEventCard {
+  @Prop() title: string = 'Title';
 
   render() {
     return (
       <Host>
         <div class="event-card">
-          <h4>Interaction title</h4>
+          <h4>{this.title}</h4>
         </div>
       </Host>
     );
   }
-
 }

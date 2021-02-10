@@ -8,8 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults } from "@stencil/router";
 export namespace Components {
     interface AppEventCard {
+        "title": string;
     }
     interface AppEvents {
+        "range": Date[];
     }
     interface AppHome {
     }
@@ -78,8 +80,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AppEventCard {
+        "title"?: string;
     }
     interface AppEvents {
+        "range"?: Date[];
     }
     interface AppHome {
     }

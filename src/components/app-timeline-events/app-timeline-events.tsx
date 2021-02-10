@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, State } from '@stencil/core';
 
 @Component({
   tag: 'app-timeline-events',
@@ -6,14 +6,16 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class AppTimelineEvents {
+  @State() range: Date[];
+
   onSelectRange(range: CustomEvent<Date[]>) {
-    console.log(range.detail);
+    this.range = range.detail;
   }
 
   render() {
     return (
       <Host>
-        <app-events />
+        <app-events range={this.range} />
         <div class="devider" />
         <app-timeline onSelectRange={ev => this.onSelectRange(ev)} />
       </Host>
